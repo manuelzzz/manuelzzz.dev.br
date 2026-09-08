@@ -16,6 +16,14 @@ const pageTitle = title ? `${title} — ${SITE_TITLE}` : `${SITE_TITLE} — port
 <!doctype html>
 <html lang="pt-br">
   <head>
+    <script is:inline>
+      // Roda antes do primeiro paint pra evitar flash do tema errado.
+      (function () {
+        const stored = localStorage.getItem('theme');
+        const theme = stored ?? (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />

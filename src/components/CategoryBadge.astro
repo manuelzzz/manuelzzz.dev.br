@@ -1,5 +1,6 @@
 ---
-import { CATEGORY_COLORS, CATEGORY_LABELS } from '../consts';
+import { Icon } from 'astro-icon/components';
+import { CATEGORY_COLORS, CATEGORY_ICONS, CATEGORY_LABELS } from '../consts';
 
 interface Props {
   category: string;
@@ -9,15 +10,17 @@ interface Props {
 const { category, as = 'a' } = Astro.props;
 const colorClasses = CATEGORY_COLORS[category] ?? 'text-fg-muted border-fg-muted/40 bg-fg-muted/10';
 const label = CATEGORY_LABELS[category] ?? category;
+const icon = CATEGORY_ICONS[category];
 const Tag = as;
 ---
 
 <Tag
   href={as === 'a' ? `/changelog/category/${category}` : undefined}
   class:list={[
-    'inline-flex items-center rounded border px-2 py-0.5 font-mono text-xs',
+    'inline-flex items-center gap-1 rounded border px-2 py-0.5 font-mono text-xs',
     colorClasses,
   ]}
 >
+  {icon && <Icon name={icon} class="h-3 w-3" />}
   {label}
 </Tag>

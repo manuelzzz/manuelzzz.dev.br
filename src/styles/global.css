@@ -16,6 +16,21 @@
   --color-accent-violet: #b58aef;
 }
 
+/* Tema claro: sobrescreve os tokens de cor quando <html data-theme="light">. */
+html[data-theme='light'] {
+  color-scheme: light;
+
+  --color-bg: #f7f7f5;
+  --color-bg-raised: #ffffff;
+  --color-fg: #1c1f24;
+  --color-fg-muted: #57606a;
+  --color-border: #d0d7de;
+
+  --color-accent-teal: #0f7a6c;
+  --color-accent-amber: #8a5a00;
+  --color-accent-violet: #6b3fa0;
+}
+
 @layer base {
   html {
     color-scheme: dark;
@@ -42,5 +57,19 @@
   ::selection {
     background-color: var(--color-accent-teal);
     color: var(--color-bg);
+  }
+
+  /* Alterna qual ícone do ThemeToggle aparece conforme o tema ativo. */
+  .icon-theme-light {
+    display: none;
+  }
+  .icon-theme-dark {
+    display: block;
+  }
+  html[data-theme='light'] .icon-theme-light {
+    display: block;
+  }
+  html[data-theme='light'] .icon-theme-dark {
+    display: none;
   }
 }

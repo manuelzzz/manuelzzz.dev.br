@@ -1,0 +1,16 @@
+---
+import { Icon } from 'astro-icon/components';
+import { TECH_ICONS } from '../consts';
+
+interface Props {
+  name: string;
+}
+
+const { name } = Astro.props;
+const icon = TECH_ICONS[name];
+---
+
+<li class="flex items-center gap-1 rounded border border-border px-1.5 py-0.5">
+  {icon && <Icon name={icon} class="h-3 w-3" />}
+  {name}
+</li>

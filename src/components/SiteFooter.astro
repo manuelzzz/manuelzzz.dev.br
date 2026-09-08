@@ -1,12 +1,13 @@
 ---
 import SocialLinks from './SocialLinks.astro';
+import { SITE_TITLE } from '../consts';
 
 const year = new Date().getFullYear();
 ---
 
 <footer class="border-t border-border">
   <div class="mx-auto flex w-full max-w-3xl flex-col gap-4 px-4 py-8 sm:flex-row sm:items-center sm:justify-between sm:px-6">
-    <p class="font-mono text-xs text-fg-muted">© {year} Manuel Souza · <a href="/changelog/rss.xml" class="hover:text-accent-teal">rss</a> · <a href="https://github.com/manuelzzz/manuelzzz.dev.br" class="hover:text-accent-teal" target="_blank" rel="noopener noreferrer">source</a></p>
+    <p class="font-mono text-xs text-fg-muted">© {year} {SITE_TITLE} · <a href="/changelog/rss.xml" class="hover:text-accent-teal">rss</a> · <a href="https://github.com/manuelzzz/manuelzzz.dev.br" class="hover:text-accent-teal" target="_blank" rel="noopener noreferrer">source</a></p>
     <SocialLinks />
   </div>
 </footer>

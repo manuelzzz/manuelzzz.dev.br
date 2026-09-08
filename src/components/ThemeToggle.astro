@@ -1,0 +1,23 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<button
+  id="theme-toggle"
+  type="button"
+  aria-label="Alternar tema claro/escuro"
+  title="Alternar tema"
+  class="flex items-center justify-center rounded border border-border p-1.5 text-fg-muted transition-colors hover:border-accent-teal hover:text-accent-teal"
+>
+  <Icon name="lucide:sun" class="icon-theme-light h-4 w-4" />
+  <Icon name="lucide:moon" class="icon-theme-dark h-4 w-4" />
+</button>
+
+<script is:inline>
+  document.getElementById('theme-toggle')?.addEventListener('click', () => {
+    const html = document.documentElement;
+    const next = html.dataset.theme === 'light' ? 'dark' : 'light';
+    html.dataset.theme = next;
+    localStorage.setItem('theme', next);
+  });
+</script>
