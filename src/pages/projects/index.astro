@@ -4,7 +4,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProjectCard from '../../components/ProjectCard.astro';
 
 const projects = (await getCollection('projects')).sort((a, b) => {
-  if (a.data.featured !== b.data.featured) return a.data.featured ? -1 : 1;
+  const aActive = a.data.status === 'ativo';
+  const bActive = b.data.status === 'ativo';
+  if (aActive !== bActive) return aActive ? -1 : 1;
   return a.data.order - b.data.order;
 });
 ---

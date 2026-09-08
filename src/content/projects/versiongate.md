@@ -4,8 +4,7 @@ description: "Serviço open-source self-hosted para gerenciar políticas de atua
 stack: ["Go", "PostgreSQL", "Docker", "Docker Compose", "Astro", "Starlight"]
 status: ativo
 repoUrl: "https://github.com/manuelzzz/versiongate"
-liveUrl: "https://manuelzzz.github.io/versiongate/"
-featured: true
+docsUrl: "https://manuelzzz.github.io/versiongate/"
 order: 1
 ---
 

@@ -3,7 +3,6 @@ title: "Nearby"
 description: "App iOS nativo para encontrar cupons e ofertas por localização, com integração REST via URLSession/async."
 stack: ["Swift", "UIKit", "MapKit", "MVVM-C", "TypeScript", "Prisma ORM", "Docker"]
 status: concluido
-featured: false
 order: 4
 ---
 

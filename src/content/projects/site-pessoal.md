@@ -4,7 +4,6 @@ description: "Meu portfólio e changelog pessoal: estático, alimentado por Mark
 stack: ["Astro", "Tailwind CSS", "TypeScript", "GitHub Actions"]
 status: ativo
 repoUrl: "https://github.com/manuelzzz/manuelzzz.dev.br"
-featured: true
 order: 0
 ---
 

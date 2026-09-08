@@ -7,7 +7,7 @@ interface Props {
 }
 
 const { project } = Astro.props;
-const { title, description, stack, status, repoUrl, liveUrl } = project.data;
+const { title, description, stack, status, repoUrl, docsUrl, liveUrl } = project.data;
 
 const statusColors: Record<string, string> = {
   ativo: 'text-accent-teal border-accent-teal/40 bg-accent-teal/10',
@@ -32,6 +32,11 @@ const statusColors: Record<string, string> = {
     {repoUrl && (
       <a href={repoUrl} class="text-accent-teal hover:underline" target="_blank" rel="noopener noreferrer">
         repo →
+      </a>
+    )}
+    {docsUrl && (
+      <a href={docsUrl} class="text-accent-teal hover:underline" target="_blank" rel="noopener noreferrer">
+        docs →
       </a>
     )}
     {liveUrl && (

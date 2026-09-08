@@ -5,7 +5,6 @@ stack: ["Astro", "TypeScript", "Tailwind CSS", "Pagefind", "Markdown"]
 status: ativo
 repoUrl: "https://github.com/manuelzzz/the_cheat_sheet"
 liveUrl: "https://manuelzzz.github.io/the_cheat_sheet/"
-featured: true
 order: 2
 ---
 

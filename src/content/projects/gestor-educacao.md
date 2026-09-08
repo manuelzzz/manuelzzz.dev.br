@@ -3,7 +3,6 @@ title: "Gestor Educação"
 description: "App para acompanhamento de turmas, atividades e desempenho de alunos da rede municipal de Macaíba/RN. Publicado na Play Store, desenvolvido de ponta a ponta."
 stack: ["Flutter", "Dart", "Clean-Dart", "Flutter Modular", "GitHub Actions", "BuildRunner"]
 status: concluido
-featured: false
 order: 3
 ---
 

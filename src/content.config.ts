@@ -22,8 +22,8 @@ const projects = defineCollection({
     stack: z.array(z.string()),
     status: z.enum(['ativo', 'pausado', 'arquivado', 'concluido']),
     repoUrl: z.string().url().optional(),
+    docsUrl: z.string().url().optional(),
     liveUrl: z.string().url().optional(),
-    featured: z.boolean().default(false),
     order: z.number().default(0),
   }),
 });

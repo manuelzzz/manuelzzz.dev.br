@@ -1,0 +1,105 @@
+---
+import { Icon } from 'astro-icon/components';
+import type { CollectionEntry } from 'astro:content';
+import ProjectCard from './ProjectCard.astro';
+
+interface Props {
+  projects: CollectionEntry<'projects'>[];
+}
+
+const { projects } = Astro.props;
+---
+
+<div class="carousel">
+  <div id="project-carousel-track" class="carousel-track">
+    {
+      projects.map((project) => (
+        <div class="carousel-item">
+          <ProjectCard project={project} />
+        </div>
+      ))
+    }
+  </div>
+  {
+    projects.length > 2 && (
+      <div class="carousel-buttons">
+        <button type="button" id="project-carousel-prev" aria-label="Projetos anteriores" class="carousel-button">
+          <Icon name="lucide:chevron-left" class="h-4 w-4" />
+        </button>
+        <button type="button" id="project-carousel-next" aria-label="Próximos projetos" class="carousel-button">
+          <Icon name="lucide:chevron-right" class="h-4 w-4" />
+        </button>
+      </div>
+    )
+  }
+</div>
+
+<script is:inline>
+  (function () {
+    const track = document.getElementById('project-carousel-track');
+    const prev = document.getElementById('project-carousel-prev');
+    const next = document.getElementById('project-carousel-next');
+    if (!track || !prev || !next) return;
+
+    const scrollByPage = (direction) => {
+      track.scrollBy({ left: direction * track.clientWidth, behavior: 'smooth' });
+    };
+
+    prev.addEventListener('click', () => scrollByPage(-1));
+    next.addEventListener('click', () => scrollByPage(1));
+  })();
+</script>
+
+<style>
+  .carousel {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .carousel-track {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .carousel-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .carousel-item {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .carousel-item {
+      flex-basis: calc(50% - 0.5rem);
+    }
+  }
+
+  .carousel-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+  }
+
+  .carousel-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-border);
+    border-radius: 0.25rem;
+    padding: 0.375rem;
+    color: var(--color-fg-muted);
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .carousel-button:hover {
+    color: var(--color-accent-teal);
+    border-color: var(--color-accent-teal);
+  }
+</style>
