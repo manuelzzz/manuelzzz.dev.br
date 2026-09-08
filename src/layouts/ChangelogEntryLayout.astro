@@ -1,0 +1,26 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import CategoryBadge from '../components/CategoryBadge.astro';
+
+interface Props {
+  title: string;
+  date: Date;
+  category: string;
+  summary: string;
+}
+
+const { title, date, category, summary } = Astro.props;
+const formattedDate = date.toISOString().slice(0, 10);
+---
+
+<BaseLayout title={title} description={summary}>
+  <a href="/changelog" class="font-mono text-xs text-fg-muted hover:text-accent-teal">&larr; changelog</a>
+  <div class="mt-4 flex flex-wrap items-center gap-2 font-mono text-xs text-fg-muted">
+    <time datetime={formattedDate}>{formattedDate}</time>
+    <CategoryBadge category={category} />
+  </div>
+  <h1 class="mt-2 font-heading text-2xl text-fg">{title}</h1>
+  <div class="prose prose-invert mt-6 max-w-none prose-headings:font-heading prose-a:text-accent-teal">
+    <slot />
+  </div>
+</BaseLayout>

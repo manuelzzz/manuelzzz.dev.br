@@ -1,0 +1,33 @@
+---
+import { NAV_ITEMS, SITE_TITLE } from '../consts';
+
+const currentPath = Astro.url.pathname;
+
+function isActive(href: string) {
+  if (href === '/') return currentPath === '/';
+  return currentPath.startsWith(href);
+}
+---
+
+<header class="border-b border-border">
+  <div class="mx-auto flex w-full max-w-3xl items-center justify-between px-4 py-4 sm:px-6">
+    <a href="/" class="font-heading text-sm text-fg">
+      <span class="text-accent-teal">~/</span>{SITE_TITLE.toLowerCase().replace(' ', '-')}
+    </a>
+    <nav class="flex gap-4 font-heading text-sm">
+      {
+        NAV_ITEMS.map((item) => (
+          <a
+            href={item.href}
+            class:list={[
+              'transition-colors hover:text-accent-teal',
+              isActive(item.href) ? 'text-accent-teal' : 'text-fg-muted',
+            ]}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</header>

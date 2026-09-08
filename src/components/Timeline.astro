@@ -1,0 +1,24 @@
+---
+import ChangelogEntry from './ChangelogEntry.astro';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  entries: CollectionEntry<'changelog'>[];
+}
+
+const { entries } = Astro.props;
+---
+
+<div class="space-y-8 border-l border-border pl-2">
+  {
+    entries.map((entry) => (
+      <ChangelogEntry
+        slug={entry.id}
+        title={entry.data.title}
+        date={entry.data.date}
+        category={entry.data.category}
+        summary={entry.data.summary}
+      />
+    ))
+  }
+</div>

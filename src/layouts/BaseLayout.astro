@@ -1,0 +1,34 @@
+---
+import '../styles/global.css';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description = SITE_DESCRIPTION } = Astro.props;
+const pageTitle = title ? `${title} — ${SITE_TITLE}` : `${SITE_TITLE} — portfólio & changelog`;
+---
+
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <link rel="alternate" type="application/rss+xml" title={`${SITE_TITLE} — changelog`} href="/changelog/rss.xml" />
+    <title>{pageTitle}</title>
+  </head>
+  <body class="flex min-h-screen flex-col bg-bg text-fg antialiased">
+    <SiteHeader />
+    <main class="mx-auto w-full max-w-3xl flex-1 px-4 py-10 sm:px-6">
+      <slot />
+    </main>
+    <SiteFooter />
+  </body>
+</html>

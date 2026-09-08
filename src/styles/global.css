@@ -1,0 +1,46 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-mono: "JetBrains Mono", "IBM Plex Mono", ui-monospace, monospace;
+  --font-sans: "Inter", "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --color-bg: #0d1117;
+  --color-bg-raised: #161b22;
+  --color-fg: #e6edf3;
+  --color-fg-muted: #8b949e;
+  --color-border: #30363d;
+
+  --color-accent-teal: #56d4c4;
+  --color-accent-amber: #e3a84e;
+  --color-accent-violet: #b58aef;
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-heading {
+    font-family: var(--font-mono);
+  }
+
+  a {
+    text-underline-offset: 3px;
+  }
+
+  ::selection {
+    background-color: var(--color-accent-teal);
+    color: var(--color-bg);
+  }
+}

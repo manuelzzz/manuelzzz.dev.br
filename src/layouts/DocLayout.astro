@@ -1,0 +1,18 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  heading: string;
+}
+
+const { title, description, heading } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <h1 class="font-heading text-2xl text-fg">{heading}</h1>
+  <div class="prose prose-invert mt-6 max-w-none prose-headings:font-heading prose-a:text-accent-teal">
+    <slot />
+  </div>
+</BaseLayout>

@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Timeline from '../../components/Timeline.astro';
+import CategoryBadge from '../../components/CategoryBadge.astro';
+import { CATEGORY_LABELS } from '../../consts';
+
+const entries = (await getCollection('changelog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+
+const categories = Object.keys(CATEGORY_LABELS);
+---
+
+<BaseLayout title="changelog">
+  <h1 class="font-heading text-2xl text-fg">changelog</h1>
+  <p class="mt-2 text-fg-muted">Progresso em projetos, contribuições open-source e notas técnicas.</p>
+
+  <div class="mt-4 flex flex-wrap gap-2">
+    {categories.map((category) => <CategoryBadge category={category} />)}
+  </div>
+
+  <div class="mt-8">
+    <Timeline entries={entries} />
+  </div>
+</BaseLayout>

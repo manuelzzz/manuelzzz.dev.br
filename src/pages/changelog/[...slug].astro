@@ -1,0 +1,24 @@
+---
+import { getCollection, render } from 'astro:content';
+import ChangelogEntryLayout from '../../layouts/ChangelogEntryLayout.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('changelog', ({ data }) => !data.draft);
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<ChangelogEntryLayout
+  title={entry.data.title}
+  date={entry.data.date}
+  category={entry.data.category}
+  summary={entry.data.summary}
+>
+  <Content />
+</ChangelogEntryLayout>

@@ -1,0 +1,32 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Timeline from '../../../components/Timeline.astro';
+import { CATEGORY_LABELS } from '../../../consts';
+
+export async function getStaticPaths() {
+  return Object.keys(CATEGORY_LABELS).map((category) => ({
+    params: { category },
+  }));
+}
+
+const { category } = Astro.params;
+const entries = (await getCollection('changelog', ({ data }) => !data.draft && data.category === category)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+---
+
+<BaseLayout title={`changelog · ${category}`}>
+  <a href="/changelog" class="font-mono text-xs text-fg-muted hover:text-accent-teal">&larr; changelog</a>
+  <h1 class="mt-4 font-heading text-2xl text-fg">{category}</h1>
+
+  {
+    entries.length > 0 ? (
+      <div class="mt-8">
+        <Timeline entries={entries} />
+      </div>
+    ) : (
+      <p class="mt-8 text-fg-muted">Nenhuma entrada nessa categoria ainda.</p>
+    )
+  }
+</BaseLayout>

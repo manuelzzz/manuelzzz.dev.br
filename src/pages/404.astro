@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="404">
+  <div class="font-mono">
+    <p class="text-accent-amber">$ cat {Astro.url.pathname}</p>
+    <p class="mt-1 text-fg-muted">cat: {Astro.url.pathname}: command not found (404)</p>
+    <p class="mt-6">
+      <a href="/" class="text-accent-teal hover:underline">cd ~</a>
+    </p>
+  </div>
+</BaseLayout>
