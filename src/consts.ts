@@ -74,3 +74,38 @@ export const TECH_ICONS: Record<string, string> = {
   'Prisma ORM': 'simple-icons:prisma',
   Markdown: 'simple-icons:markdown',
 };
+
+// Cor oficial de marca por tecnologia (hex do simple-icons: https://github.com/simple-icons/simple-icons).
+// Algumas marcas (Next.js, Java/OpenJDK, UIKit/Apple, Markdown, Expo) são oficialmente preto/quase-preto —
+// nesses casos usamos var(--color-fg) em vez da cor literal, pra continuar visível nos dois temas
+// (um hex fixo cinza-claro sumiria no fundo claro do tema light).
+export const TECH_COLORS: Record<string, string> = {
+  'React Native': '#61dafb',
+  React: '#61dafb',
+  'Next.js': 'var(--color-fg)',
+  Expo: 'var(--color-fg)',
+  TypeScript: '#3178c6',
+  JavaScript: '#f7df1e',
+  Docker: '#2496ed',
+  'Docker Compose': '#2496ed',
+  Flutter: '#02569b',
+  Dart: '#0175c2',
+  PHP: '#777bb4',
+  'GitHub Actions': '#2088ff',
+  'GitLab CI/CD': '#fc6d26',
+  Java: 'var(--color-fg)',
+  Spring: '#6db33f',
+  Thymeleaf: '#005f0f',
+  Figma: '#f24e1e',
+  Swift: '#f05138',
+  SwiftUI: '#f05138',
+  UIKit: 'var(--color-fg)',
+  Kotlin: '#7f52ff',
+  Astro: '#bc52ee',
+  Starlight: '#bc52ee',
+  'Tailwind CSS': '#06b6d4',
+  Go: '#00add8',
+  PostgreSQL: '#4169e1',
+  'Prisma ORM': '#2d3748',
+  Markdown: 'var(--color-fg)',
+};

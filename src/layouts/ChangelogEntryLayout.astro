@@ -20,7 +20,7 @@ const formattedDate = date.toISOString().slice(0, 10);
     <CategoryBadge category={category} />
   </div>
   <h1 class="mt-2 font-heading text-2xl text-fg">{title}</h1>
-  <div class="prose prose-invert mt-6 max-w-none prose-headings:font-heading prose-a:text-accent-teal">
+  <div class="prose mt-6 max-w-none text-justify prose-headings:font-heading prose-a:text-accent-teal">
     <slot />
   </div>
 </BaseLayout>

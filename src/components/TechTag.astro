@@ -1,6 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
-import { TECH_ICONS } from '../consts';
+import { TECH_COLORS, TECH_ICONS } from '../consts';
 
 interface Props {
   name: string;
@@ -8,9 +8,13 @@ interface Props {
 
 const { name } = Astro.props;
 const icon = TECH_ICONS[name];
+const color = TECH_COLORS[name];
+// color-mix funciona tanto com hex quanto com var(--color-fg) — diferente do truque de
+// concatenar alpha em hex (ex: `${color}66`), que quebra quando color é uma CSS var.
+const borderStyle = color ? `border-color: color-mix(in srgb, ${color} 40%, transparent)` : undefined;
 ---
 
-<li class="flex items-center gap-1 rounded border border-border px-1.5 py-0.5">
-  {icon && <Icon name={icon} class="h-3 w-3" />}
+<li class="flex items-center gap-1 rounded border border-border px-1.5 py-0.5" style={borderStyle}>
+  {icon && <Icon name={icon} class="h-3 w-3" style={color ? `color: ${color}` : undefined} />}
   {name}
 </li>
