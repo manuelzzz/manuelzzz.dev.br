@@ -5,6 +5,7 @@ import SocialLinks from '../components/SocialLinks.astro';
 import ProjectCarousel from '../components/ProjectCarousel.astro';
 import ChangelogEntry from '../components/ChangelogEntry.astro';
 import TechTag from '../components/TechTag.astro';
+import ContributionGraph from '../components/ContributionGraph.astro';
 
 const allProjects = await getCollection('projects');
 // Projetos "em destaque" são simplesmente os ativos — sem flag manual pra manter em dia.
@@ -73,6 +74,16 @@ const experiences = [
     </p>
     <div class="mt-4">
       <SocialLinks />
+    </div>
+  </section>
+
+  <section class="mt-12">
+    <h2 class="font-heading text-lg text-fg">contribuições</h2>
+    <p class="mt-2 text-sm text-fg-muted">
+      GitHub + GitLab, unificados via <a href="https://github.com/manuelzzz/DevGrid" class="text-accent-teal hover:underline" target="_blank" rel="noopener noreferrer">DevGrid</a>.
+    </p>
+    <div class="mt-4">
+      <ContributionGraph />
     </div>
   </section>
 

@@ -1,0 +1,15 @@
+---
+// SVGs gerados diariamente pelo próprio DevGrid (workflow na branch "assets" do repo),
+// combinando o contribution graph do GitHub e do GitLab. Ver: github.com/manuelzzz/DevGrid
+const LIGHT_SRC = 'https://raw.githubusercontent.com/manuelzzz/DevGrid/assets/contributions-light.svg';
+const DARK_SRC = 'https://raw.githubusercontent.com/manuelzzz/DevGrid/assets/contributions-dark.svg';
+---
+
+<!-- Fundo em bg-bg (não bg-bg-raised): as células vazias do SVG vêm coloridas em
+     #161b22/#ebedf0 (convenção do GitHub para contraste contra o fundo de página, não
+     contra um "card"). #161b22 é idêntico ao nosso bg-bg-raised — nesse fundo, as
+     células vazias no tema escuro ficam invisíveis. -->
+<div class="overflow-x-auto rounded border border-border bg-bg p-4">
+  <img src={LIGHT_SRC} alt="Contribution graph (GitHub + GitLab)" class="icon-theme-light min-w-[640px]" loading="lazy" />
+  <img src={DARK_SRC} alt="Contribution graph (GitHub + GitLab)" class="icon-theme-dark min-w-[640px]" loading="lazy" />
+</div>
