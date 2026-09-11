@@ -8,8 +8,8 @@ export const PERSON_JOB_TITLE = 'Desenvolvedor Mobile & Frontend';
 export const HERO_STACK = ['Flutter', 'React Native', 'Expo', 'React', 'TypeScript', 'Swift'];
 
 export const PROOF_POINTS = [
-  { label: 'downloads', value: '+100 mil' },
-  { label: 'usuários', value: '+10 mil' },
+  { label: 'downloads', value: '+140 mil' },
+  { label: 'usuários', value: '+15 mil' },
   { label: 'apps Flutter em produção', value: '+10' },
   { label: 'projetos open-source ativos', value: '4' },
 ] as const;
