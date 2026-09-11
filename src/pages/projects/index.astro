@@ -11,7 +11,10 @@ const projects = (await getCollection('projects')).sort((a, b) => {
 });
 ---
 
-<BaseLayout title="projects">
+<BaseLayout
+  title="projects"
+  description="Projetos pessoais e contribuições open-source de Manuel Santos Souza — Flutter, React Native, TypeScript e mais."
+>
   <h1 class="font-heading text-2xl text-fg">projetos</h1>
   <p class="mt-2 text-fg-muted">Projetos pessoais e contribuições em que venho trabalhando.</p>
   <div class="mt-8 grid gap-4 sm:grid-cols-2">

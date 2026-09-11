@@ -2,15 +2,32 @@
 import '../styles/global.css';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { SITE_TITLE, SITE_HANDLE, SITE_DESCRIPTION, PERSON_JOB_TITLE, SOCIAL_LINKS } from '../consts';
 
 interface Props {
   title?: string;
   description?: string;
+  type?: 'website' | 'article';
 }
 
-const { title, description = SITE_DESCRIPTION } = Astro.props;
-const pageTitle = title ? `${title} — ${SITE_TITLE}` : `${SITE_TITLE} — portfólio & changelog`;
+const { title, description = SITE_DESCRIPTION, type = 'website' } = Astro.props;
+const siteTitleWithHandle = `${SITE_TITLE} (${SITE_HANDLE})`;
+const pageTitle = title
+  ? `${title} — ${siteTitleWithHandle}`
+  : `${siteTitleWithHandle} — portfólio & changelog`;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: SITE_TITLE,
+  alternateName: SITE_HANDLE,
+  url: Astro.site?.toString(),
+  jobTitle: PERSON_JOB_TITLE,
+  sameAs: SOCIAL_LINKS.filter((link) => !link.href.startsWith('/') && !link.href.startsWith('mailto:')).map(
+    (link) => link.href,
+  ),
+};
 ---
 
 <!doctype html>
@@ -31,8 +48,22 @@ const pageTitle = title ? `${title} — ${SITE_TITLE}` : `${SITE_TITLE} — port
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
     <link rel="alternate" type="application/rss+xml" title={`${SITE_TITLE} — changelog`} href="/changelog/rss.xml" />
     <title>{pageTitle}</title>
+
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content={SITE_TITLE} />
+    <meta property="og:locale" content="pt_BR" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(personJsonLd)} />
   </head>
   <body class="flex min-h-screen flex-col bg-bg text-fg antialiased">
     <SiteHeader />

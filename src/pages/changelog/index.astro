@@ -12,7 +12,10 @@ const entries = (await getCollection('changelog', ({ data }) => !data.draft)).so
 const categories = Object.keys(CATEGORY_LABELS);
 ---
 
-<BaseLayout title="changelog">
+<BaseLayout
+  title="changelog"
+  description="Progresso em projetos, contribuições open-source e notas técnicas de Manuel Santos Souza."
+>
   <h1 class="font-heading text-2xl text-fg">changelog</h1>
   <p class="mt-2 text-fg-muted">Progresso em projetos, contribuições open-source e notas técnicas.</p>
 

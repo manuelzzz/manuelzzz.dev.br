@@ -13,7 +13,7 @@ const { title, date, category, summary } = Astro.props;
 const formattedDate = date.toISOString().slice(0, 10);
 ---
 
-<BaseLayout title={title} description={summary}>
+<BaseLayout title={title} description={summary} type="article">
   <a href="/changelog" class="font-mono text-xs text-fg-muted hover:text-accent-teal">&larr; changelog</a>
   <div class="mt-4 flex flex-wrap items-center gap-2 font-mono text-xs text-fg-muted">
     <time datetime={formattedDate}>{formattedDate}</time>
