@@ -6,6 +6,11 @@ import ProjectCarousel from '../components/ProjectCarousel.astro';
 import ChangelogEntry from '../components/ChangelogEntry.astro';
 import TechTag from '../components/TechTag.astro';
 import ContributionGraph from '../components/ContributionGraph.astro';
+import ProofPoints from '../components/ProofPoints.astro';
+import MainStack from '../components/MainStack.astro';
+import { PERSON_JOB_TITLE, HERO_STACK, SOCIAL_LINKS } from '../consts';
+
+const linkedIn = SOCIAL_LINKS.find((link) => link.label === 'LinkedIn')!;
 
 const allProjects = await getCollection('projects');
 // Projetos "em destaque" são simplesmente os ativos — sem flag manual pra manter em dia.
@@ -65,16 +70,36 @@ const experiences = [
 <BaseLayout>
   <section>
     <h1 class="font-heading text-2xl text-fg">Manuel Santos Souza</h1>
-    <p class="mt-3 max-w-xl text-justify text-fg-muted">
-      Desenvolvedor Mobile especializado em Flutter, com experiência também em React Native e
-      desenvolvimento nativo (Swift/SwiftUI, Kotlin). Já trabalhei em produtos de saúde, educação,
-      setor bancário e setor público, incluindo aplicativos com mais de 100 mil downloads. Esse é
-      o meu portfólio e changelog pessoal — aqui eu registro projetos, experiências e o progresso
-      do que estou construindo e aprendendo.
+    <p class="mt-1 font-mono text-sm text-accent-teal">{PERSON_JOB_TITLE}</p>
+    <p class="mt-2 font-mono text-xs text-fg-muted">{HERO_STACK.join(' · ')}</p>
+    <p class="mt-4 max-w-xl text-justify text-fg-muted">
+      Já trabalhei em produtos de saúde, educação, setor bancário e setor público — do app mobile
+      ao dashboard web. Esse é o meu portfólio e changelog pessoal — aqui eu registro projetos,
+      experiências e o progresso do que estou construindo e aprendendo.
     </p>
+    <div class="mt-4 flex flex-wrap items-center gap-3">
+      <a
+        href="/projects"
+        class="rounded border border-accent-teal px-3 py-1.5 font-mono text-xs text-accent-teal transition-colors hover:bg-accent-teal/10"
+      >
+        ver projetos →
+      </a>
+      <a
+        href={linkedIn.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="rounded border border-border px-3 py-1.5 font-mono text-xs text-fg-muted transition-colors hover:border-accent-teal hover:text-accent-teal"
+      >
+        LinkedIn →
+      </a>
+    </div>
     <div class="mt-4">
       <SocialLinks />
     </div>
+  </section>
+
+  <section class="mt-12">
+    <ProofPoints />
   </section>
 
   <section class="mt-12">
@@ -103,6 +128,13 @@ const experiences = [
         ))
       }
     </ul>
+  </section>
+
+  <section class="mt-12">
+    <h2 class="font-heading text-lg text-fg">stack principal</h2>
+    <div class="mt-4">
+      <MainStack />
+    </div>
   </section>
 
   <section class="mt-12">

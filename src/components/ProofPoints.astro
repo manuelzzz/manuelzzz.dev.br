@@ -1,0 +1,14 @@
+---
+import { PROOF_POINTS } from '../consts';
+---
+
+<ul class="grid grid-cols-2 gap-4 sm:grid-cols-4">
+  {
+    PROOF_POINTS.map((point) => (
+      <li class="rounded border border-border bg-bg-raised p-3 text-center">
+        <p class="font-heading text-xl text-accent-teal">{point.value}</p>
+        <p class="mt-1 text-xs text-fg-muted">{point.label}</p>
+      </li>
+    ))
+  }
+</ul>

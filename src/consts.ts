@@ -3,6 +3,27 @@ export const SITE_HANDLE = 'manuelzzz';
 export const SITE_DESCRIPTION =
   'Portfólio e changelog técnico de Manuel Santos Souza — projetos, aprendizados e progresso em open-source.';
 
+export const PERSON_JOB_TITLE = 'Desenvolvedor Mobile & Frontend';
+
+export const HERO_STACK = ['Flutter', 'React Native', 'Expo', 'React', 'TypeScript', 'Swift'];
+
+export const PROOF_POINTS = [
+  { label: 'downloads', value: '+100 mil' },
+  { label: 'usuários', value: '+10 mil' },
+  { label: 'apps Flutter em produção', value: '+10' },
+  { label: 'projetos open-source ativos', value: '4' },
+] as const;
+
+export const MAIN_STACK = [
+  { group: 'Mobile & Native', items: ['Flutter', 'Dart', 'React Native', 'Expo', 'Swift', 'UIKit', 'SwiftUI'] },
+  { group: 'Backend', items: ['Java', 'Spring', 'Go', 'PostgreSQL', 'REST APIs', 'GraphQL'] },
+  { group: 'Frontend', items: ['React', 'TypeScript', 'JavaScript', 'Jaspr', 'Tailwind CSS'] },
+  {
+    group: 'Engineering & Ops',
+    items: ['TDD', 'Clean Architecture', 'CI/CD', 'Docker', 'GitHub Actions', 'GitLab CI/CD', 'Git'],
+  },
+] as const;
+
 export const NAV_ITEMS = [
   { label: 'home', href: '/' },
   { label: 'projects', href: '/projects' },
@@ -34,6 +55,20 @@ export const CATEGORY_COLORS: Record<string, string> = {
   nota: 'text-accent-teal border-accent-teal/40 bg-accent-teal/10',
 };
 
+export const STATUS_LABELS: Record<string, string> = {
+  ativo: 'ativo',
+  pausado: 'pausado',
+  arquivado: 'arquivado',
+  concluido: 'concluído',
+};
+
+export const STATUS_COLORS: Record<string, string> = {
+  ativo: 'text-accent-teal border-accent-teal/40 bg-accent-teal/10',
+  pausado: 'text-accent-amber border-accent-amber/40 bg-accent-amber/10',
+  arquivado: 'text-fg-muted border-fg-muted/40 bg-fg-muted/10',
+  concluido: 'text-accent-violet border-accent-violet/40 bg-accent-violet/10',
+};
+
 export const CATEGORY_ICONS: Record<string, string> = {
   'open-source': 'lucide:git-branch',
   aprendizado: 'lucide:book-open',
@@ -58,6 +93,9 @@ export const TECH_ICONS: Record<string, string> = {
   PHP: 'simple-icons:php',
   'GitHub Actions': 'simple-icons:githubactions',
   'GitLab CI/CD': 'simple-icons:gitlab',
+  Git: 'simple-icons:git',
+  GraphQL: 'simple-icons:graphql',
+  'REST APIs': 'lucide:webhook',
   Java: 'simple-icons:openjdk',
   Spring: 'simple-icons:spring',
   Thymeleaf: 'simple-icons:thymeleaf',
@@ -93,6 +131,9 @@ export const TECH_COLORS: Record<string, string> = {
   PHP: '#777bb4',
   'GitHub Actions': '#2088ff',
   'GitLab CI/CD': '#fc6d26',
+  Git: '#f03c2e',
+  GraphQL: '#e10098',
+  'REST APIs': '#0ea5e9',
   Java: 'var(--color-fg)',
   Spring: '#6db33f',
   Thymeleaf: '#005f0f',

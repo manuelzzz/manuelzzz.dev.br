@@ -1,0 +1,15 @@
+---
+interface Props {
+  heading: string;
+  items: string[];
+}
+
+const { heading, items } = Astro.props;
+---
+
+<section class="mt-8">
+  <h2 class="font-heading text-lg text-fg">{heading}</h2>
+  <ul class="mt-3 space-y-2 text-fg-muted">
+    {items.map((item) => <li class="text-justify">{item}</li>)}
+  </ul>
+</section>

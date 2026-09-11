@@ -19,6 +19,10 @@ const projects = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
+    problem: z.string().optional(),
+    solution: z.string().optional(),
+    contribution: z.string().optional(),
+    learnings: z.string().optional(),
     stack: z.array(z.string()),
     status: z.enum(['ativo', 'pausado', 'arquivado', 'concluido']),
     repoUrl: z.string().url().optional(),
@@ -28,4 +32,14 @@ const projects = defineCollection({
   }),
 });
 
-export const collections = { changelog, projects };
+const now = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/now' }),
+  schema: z.object({
+    updatedAt: z.coerce.date(),
+    currently: z.array(z.string()),
+    learning: z.array(z.string()),
+    exploring: z.array(z.string()),
+  }),
+});
+
+export const collections = { changelog, projects, now };

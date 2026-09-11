@@ -1,6 +1,10 @@
 ---
 title: "version_policy"
 description: "Motor de políticas de atualização de versão, agnóstico de framework, em Dart puro. Dado o histórico de releases e a versão atual do app, determina se a atualização é desnecessária, opcional ou obrigatória — percorrendo o caminho de upgrade, não só comparando a versão atual com a mais recente."
+problem: "Comparar só a versão atual do usuário contra a mais recente pode deixar passar uma atualização obrigatória que existe *entre* as duas — o app segue achando que está tudo bem quando não está."
+solution: "Lib pure Dart (sem Flutter, HTTP, storage ou UI) que percorre o histórico completo de releases entre a versão atual e a mais recente, e resolve uma única pergunta: qual é a exigência de atualização — nenhuma, opcional ou obrigatória?"
+contribution: "Projeto próprio, extraído da lógica de políticas de atualização usada no VersionGate para ser reutilizável independente de framework. Licença MIT."
+learnings: "Separar essa lógica do VersionGate deixou claro o valor de isolar uma regra de negócio pura (sem I/O) numa lib própria — o consumidor decide o que fazer com a resposta (diálogo, bloqueio, log), a lib só resolve a regra."
 stack: ["Dart"]
 status: ativo
 repoUrl: "https://github.com/manuelzzz/version_policy"

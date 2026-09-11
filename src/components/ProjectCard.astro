@@ -1,33 +1,56 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import TechTag from './TechTag.astro';
+import { STATUS_COLORS, STATUS_LABELS } from '../consts';
 
 interface Props {
   project: CollectionEntry<'projects'>;
 }
 
 const { project } = Astro.props;
-const { title, description, stack, status, repoUrl, docsUrl, liveUrl } = project.data;
-
-const statusColors: Record<string, string> = {
-  ativo: 'text-accent-teal border-accent-teal/40 bg-accent-teal/10',
-  pausado: 'text-accent-amber border-accent-amber/40 bg-accent-amber/10',
-  arquivado: 'text-fg-muted border-fg-muted/40 bg-fg-muted/10',
-  concluido: 'text-accent-violet border-accent-violet/40 bg-accent-violet/10',
-};
+const { title, description, problem, solution, contribution, learnings, stack, status, repoUrl, docsUrl, liveUrl } =
+  project.data;
 ---
 
 <article class="rounded border border-border bg-bg-raised p-4">
   <div class="flex items-start justify-between gap-2">
     <h3 class="font-heading text-base text-fg">{title}</h3>
-    <span class:list={['shrink-0 rounded border px-2 py-0.5 font-mono text-xs', statusColors[status]]}>
-      {status}
+    <span class:list={['shrink-0 rounded border px-2 py-0.5 font-mono text-xs', STATUS_COLORS[status]]}>
+      {STATUS_LABELS[status] ?? status}
     </span>
   </div>
-  <p class="mt-2 text-sm text-fg-muted">{description}</p>
+
+  {
+    problem || solution ? (
+      <div class="mt-2 space-y-2 text-sm text-fg-muted">
+        {problem && (
+          <p>
+            <span class="font-mono text-xs text-fg">problema:</span> {problem}
+          </p>
+        )}
+        {solution && (
+          <p>
+            <span class="font-mono text-xs text-fg">solução:</span> {solution}
+          </p>
+        )}
+      </div>
+    ) : (
+      <p class="mt-2 text-sm text-fg-muted">{description}</p>
+    )
+  }
+
+  {
+    contribution && (
+      <p class="mt-2 text-sm text-fg-muted">
+        <span class="font-mono text-xs text-fg">contribuição:</span> {contribution}
+      </p>
+    )
+  }
+
   <ul class="mt-3 flex flex-wrap gap-2 font-mono text-xs text-fg-muted">
     {stack.map((tech) => <TechTag name={tech} />)}
   </ul>
+
   <div class="mt-3 flex gap-4 font-mono text-xs">
     {repoUrl && (
       <a href={repoUrl} class="text-accent-teal hover:underline" target="_blank" rel="noopener noreferrer">
@@ -45,4 +68,10 @@ const statusColors: Record<string, string> = {
       </a>
     )}
   </div>
+
+  {
+    learnings && (
+      <p class="mt-3 border-t border-border pt-2 text-xs text-fg-muted italic">{learnings}</p>
+    )
+  }
 </article>

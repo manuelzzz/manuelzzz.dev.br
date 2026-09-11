@@ -1,23 +1,24 @@
 ---
-import DocLayout from '../layouts/DocLayout.astro';
+import { getEntry } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import NowSection from '../components/NowSection.astro';
 
-const lastUpdated = '2026-09-08';
+const entry = await getEntry('now', 'now');
+const { updatedAt, currently, learning, exploring } = entry!.data;
+const formattedDate = updatedAt.toISOString().slice(0, 10);
 ---
 
-<DocLayout title="now" heading="agora">
-  <p class="font-mono text-xs text-fg-muted">última atualização: {lastUpdated}</p>
-
-  <p>
-    Atualmente sou Desenvolvedor Front-End (Mobile + Web) na <strong>BiON (Embrapii)</strong>,
-    trabalhando no mobile (React Native/Expo) e no dashboard web (React) de um produto de saúde
-    que usa IA para ajudar médicos a triar e priorizar pacientes com doenças autoimunes.
+<BaseLayout title="now" description="O que estou fazendo, aprendendo e explorando agora.">
+  <h1 class="font-heading text-2xl text-fg">agora</h1>
+  <p class="mt-2 font-mono text-xs text-fg-muted">
+    última atualização: <time datetime={formattedDate}>{formattedDate}</time>
   </p>
 
-  <p>
-    Nos projetos pessoais, mantenho o <a href="https://github.com/manuelzzz/versiongate" target="_blank" rel="noopener noreferrer">VersionGate</a> (serviço open-source de políticas de atualização de apps) e o <a href="https://github.com/manuelzzz/the_cheat_sheet" target="_blank" rel="noopener noreferrer">The Cheat Sheet</a> (guias de referência colaborativos para devs), além desse site.
-  </p>
+  <NowSection heading="atualmente" items={currently} />
+  <NowSection heading="aprendendo" items={learning} />
+  <NowSection heading="explorando" items={exploring} />
 
-  <p>
-    Inspirado na ideia da <a href="https://nownownow.com/about" target="_blank" rel="noopener noreferrer">now page</a>.
+  <p class="mt-10 border-t border-border pt-4 text-xs text-fg-muted">
+    Inspirado na ideia da <a href="https://nownownow.com/about" class="text-accent-teal hover:underline" target="_blank" rel="noopener noreferrer">now page</a>.
   </p>
-</DocLayout>
+</BaseLayout>

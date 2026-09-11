@@ -1,0 +1,17 @@
+---
+import { MAIN_STACK } from '../consts';
+import TechTag from './TechTag.astro';
+---
+
+<div class="grid gap-4 sm:grid-cols-2">
+  {
+    MAIN_STACK.map((group) => (
+      <div>
+        <p class="font-mono text-xs text-fg-muted">{group.group}</p>
+        <ul class="mt-2 flex flex-wrap gap-2 font-mono text-xs text-fg-muted">
+          {group.items.map((tech) => <TechTag name={tech} />)}
+        </ul>
+      </div>
+    ))
+  }
+</div>
