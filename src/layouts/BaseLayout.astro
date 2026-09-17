@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import BackToTop from '../components/BackToTop.astro';
 import { SITE_TITLE, SITE_HANDLE, SITE_DESCRIPTION, PERSON_JOB_TITLE, SOCIAL_LINKS } from '../consts';
 
 interface Props {
@@ -71,5 +72,6 @@ const personJsonLd = {
       <slot />
     </main>
     <SiteFooter />
+    <BackToTop />
   </body>
 </html>

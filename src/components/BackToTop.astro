@@ -1,0 +1,45 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<button
+  id="back-to-top"
+  type="button"
+  aria-label="Voltar ao topo"
+  title="Voltar ao topo"
+  class="back-to-top flex items-center justify-center rounded border border-border bg-bg-raised p-2 text-fg-muted shadow transition-colors hover:border-accent-teal hover:text-accent-teal"
+>
+  <Icon name="lucide:arrow-up" class="h-4 w-4" />
+</button>
+
+<script is:inline>
+  (function () {
+    const btn = document.getElementById('back-to-top');
+    if (!btn) return;
+
+    const toggle = () => btn.classList.toggle('is-visible', window.scrollY > 400);
+    window.addEventListener('scroll', toggle, { passive: true });
+    toggle();
+
+    btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  })();
+</script>
+
+<style>
+  .back-to-top {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 20;
+    opacity: 0;
+    transform: translateY(0.5rem);
+    pointer-events: none;
+    transition: opacity 0.15s, transform 0.15s, color 0.15s, border-color 0.15s;
+  }
+
+  .back-to-top.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+</style>

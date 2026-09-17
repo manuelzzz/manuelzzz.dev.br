@@ -1,15 +1,23 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import CategoryBadge from '../components/CategoryBadge.astro';
+import TableOfContents from '../components/TableOfContents.astro';
+
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
 
 interface Props {
   title: string;
   date: Date;
   category: string;
   summary: string;
+  headings: Heading[];
 }
 
-const { title, date, category, summary } = Astro.props;
+const { title, date, category, summary, headings } = Astro.props;
 const formattedDate = date.toISOString().slice(0, 10);
 ---
 
@@ -20,6 +28,7 @@ const formattedDate = date.toISOString().slice(0, 10);
     <CategoryBadge category={category} />
   </div>
   <h1 class="mt-2 font-heading text-2xl text-fg">{title}</h1>
+  <TableOfContents headings={headings} />
   <div class="prose mt-6 max-w-none text-justify prose-headings:font-heading prose-a:text-accent-teal">
     <slot />
   </div>
